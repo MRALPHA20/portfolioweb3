@@ -191,11 +191,22 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Validate all fields are filled
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+
         const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
+        const name = formData.get('name').trim();
+        const email = formData.get('email').trim();
+        const subject = formData.get('subject').trim();
+        const message = formData.get('message').trim();
+
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all fields before sending.');
+            return;
+        }
 
         const btn = contactForm.querySelector('.btn-primary');
         const originalHTML = btn.innerHTML;
