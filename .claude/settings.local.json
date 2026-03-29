@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(sudo npm:*)",
+      "Bash(mkdir -p /home/kali/.npm-global)",
+      "Bash(npm config:*)",
+      "Bash(export PATH=/home/kali/.npm-global/bin:$PATH)",
+      "Bash(vercel --version)",
+      "Bash(vercel deploy:*)"
+    ]
+  }
+}
