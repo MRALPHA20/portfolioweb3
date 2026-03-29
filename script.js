@@ -9,7 +9,7 @@
     // Safety: always hide preloader after max 5s
     var safetyTimer = setTimeout(function () {
         hidePreloader();
-    }, 5000);
+    }, 3500);
 
     function hidePreloader() {
         var pl = document.getElementById('preloader');
@@ -56,13 +56,13 @@
             });
 
             plTL.set('.preloader-logo, .preloader-text, .preloader-bar, .preloader-percent', { opacity: 1 })
-                .from('.preloader-logo', { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' })
-                .from('.preloader-text', { opacity: 0, y: 10, duration: 0.4, ease: 'power2.out' }, '-=0.2')
-                .from('.preloader-bar', { opacity: 0, duration: 0.3 }, '-=0.2')
-                .from('.preloader-percent', { opacity: 0, duration: 0.3 }, '-=0.2')
+                .from('.preloader-logo', { opacity: 0, y: 15, duration: 0.3, ease: 'power2.out' })
+                .from('.preloader-text', { opacity: 0, duration: 0.2, ease: 'power2.out' }, '-=0.1')
+                .from('.preloader-bar', { opacity: 0, duration: 0.2 }, '-=0.1')
+                .from('.preloader-percent', { opacity: 0, duration: 0.2 }, '-=0.1')
                 .to(preloaderFill, {
                     width: '100%',
-                    duration: 1.6,
+                    duration: 0.8,
                     ease: 'power2.inOut',
                     onUpdate: function () {
                         if (preloaderPercent) {
@@ -70,7 +70,7 @@
                         }
                     }
                 })
-                .to('.preloader-inner', { opacity: 0, y: -20, duration: 0.4, ease: 'power3.in' }, '+=0.2');
+                .to('.preloader-inner', { opacity: 0, y: -15, duration: 0.3, ease: 'power3.in' }, '+=0.1');
 
         } catch (e) {
             console.warn('Preloader error:', e);

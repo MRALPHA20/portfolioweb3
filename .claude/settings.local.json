@@ -9,7 +9,11 @@
       "Bash(npm config:*)",
       "Bash(export PATH=/home/kali/.npm-global/bin:$PATH)",
       "Bash(vercel --version)",
-      "Bash(vercel deploy:*)"
+      "Bash(vercel deploy:*)",
+      "Bash(curl -s \"https://api.telegram.org/bot8344964601:AAF1RCaxY75cIeyhr6v5zou20enCjmJafBE/getUpdates\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"https://api.telegram.org/bot8344964601:AAGx38qclq84sjp4xmYpRATAOcrkuprQrakL/getUpdates\")",
+      "Bash(curl -s \"https://api.telegram.org/bot8344964601:AAGx38qclq84sjp4xmYpRATAOcrkuprQrak/getUpdates\")"
     ]
   }
 }
