@@ -183,9 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ---------- CONTACT FORM ----------
+    // ---------- CONTACT FORM (Telegram Bot) ----------
+    const TELEGRAM_BOT_TOKEN = '8344964601:AAF1RCaxY75cIeyhr6v5zou20enCjmJafBE';
+    const TELEGRAM_CHAT_ID = '8344964601'; // Bot's own chat - update with your user chat ID
+
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const formData = new FormData(contactForm);
@@ -194,19 +197,51 @@ document.addEventListener('DOMContentLoaded', () => {
         const subject = formData.get('subject');
         const message = formData.get('message');
 
-        // Open mailto with form data
-        const mailtoLink = `mailto:karthikumaraju@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
-        window.location.href = mailtoLink;
-
-        // Show success feedback
         const btn = contactForm.querySelector('.btn-primary');
         const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<span><i class="fas fa-check"></i> Opening Email Client...</span>';
-        btn.style.background = 'linear-gradient(135deg, #00D4AA, #00B894)';
+
+        // Show loading state
+        btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+        btn.disabled = true;
+
+        const text = `📩 *New Portfolio Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`;
+
+        try {
+            const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                btn.innerHTML = '<span><i class="fas fa-check"></i> Message Sent!</span>';
+                btn.style.background = 'linear-gradient(135deg, #22C55E, #16A34A)';
+                contactForm.reset();
+            } else {
+                // Fallback to mailto if Telegram fails
+                const mailtoLink = `mailto:karthikumaraju@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+                window.location.href = mailtoLink;
+                btn.innerHTML = '<span><i class="fas fa-envelope"></i> Opening Email...</span>';
+                btn.style.background = 'linear-gradient(135deg, #06B6D4, #0891B2)';
+            }
+        } catch (err) {
+            // Fallback to mailto on network error
+            const mailtoLink = `mailto:karthikumaraju@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+            window.location.href = mailtoLink;
+            btn.innerHTML = '<span><i class="fas fa-envelope"></i> Opening Email...</span>';
+            btn.style.background = 'linear-gradient(135deg, #06B6D4, #0891B2)';
+        }
 
         setTimeout(() => {
             btn.innerHTML = originalHTML;
             btn.style.background = '';
+            btn.disabled = false;
         }, 3000);
     });
 
