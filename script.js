@@ -122,6 +122,7 @@
             scrollReveal('.section-header', { y: 50, opacity: 0, duration: 0.8, ease: 'power3.out' });
 
             // About
+            scrollReveal('.about-photo', { scale: 0.8, opacity: 0, duration: 0.8, ease: 'power3.out' });
             scrollReveal('.about-text', { x: -50, opacity: 0, duration: 0.8, ease: 'power3.out' });
             scrollReveal('.metric-card', { y: 40, opacity: 0, duration: 0.6, ease: 'power3.out', _staggerDelay: 0.1 });
 
