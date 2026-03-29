@@ -184,8 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---------- CONTACT FORM (Telegram Bot) ----------
-    const TELEGRAM_BOT_TOKEN = '8344964601:AAF1RCaxY75cIeyhr6v5zou20enCjmJafBE';
-    const TELEGRAM_CHAT_ID = '8344964601'; // Bot's own chat - update with your user chat ID
+    const TELEGRAM_BOT_TOKEN = '8344964601:AAGx38qclq84sjp4xmYpRATAOcrkuprQrak';
+    const TELEGRAM_CHAT_ID = '754775643';
 
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', async (e) => {
