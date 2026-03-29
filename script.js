@@ -96,7 +96,7 @@
               .from('.hero-desc', { y: 30, opacity: 0, duration: 0.5 }, '-=0.2')
               .from('.hero-buttons .btn', { y: 20, opacity: 0, duration: 0.4, stagger: 0.08 }, '-=0.2')
               .from('.hero-socials a', { y: 20, opacity: 0, duration: 0.3, stagger: 0.06 }, '-=0.2')
-              .from('.hero-card', { y: 40, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.6')
+              .from('.hero-card', { y: 40, duration: 0.8, ease: 'power2.out' }, '-=0.6')
               .from('.fbadge', { scale: 0, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'back.out(2)' }, '-=0.4')
               .from('.scroll-indicator', { opacity: 0, duration: 0.4 }, '-=0.2');
         }
