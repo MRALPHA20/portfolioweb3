@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karthik Kumar Raju | Full-Stack & Web3 Developer</title>
-    <meta name="description" content="Portfolio of Karthik Kumar Raju - Full-Stack Developer, Web3/Blockchain Engineer, Security Professional">
+    <title>Karthik Kumar Raju | Web3 & Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Karthik Kumar Raju - Web3/Blockchain Developer, Full-Stack Engineer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Gradient Blob Background -->
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+
+    <!-- Gradient Mesh Background -->
+    <div class="bg-mesh">
+        <div class="mesh-orb orb-1"></div>
+        <div class="mesh-orb orb-2"></div>
+        <div class="mesh-orb orb-3"></div>
+        <div class="grid-lines"></div>
     </div>
 
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-k">K</span><span class="logo-rest">arthik</span>
+                <span class="logo-icon">&lt;/&gt;</span>
+                <span class="logo-text">karthik<span class="logo-accent">.dev</span></span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
@@ -31,10 +36,10 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#certifications" class="nav-link">Certs</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <a href="#contact" class="nav-cta">Let's Talk</a>
+            <a href="#contact" class="nav-cta"><i class="fas fa-paper-plane"></i> Hire Me</a>
             <div class="nav-toggle" id="navToggle">
                 <span></span><span></span><span></span>
             </div>
@@ -46,27 +51,28 @@
         <div class="hero-content">
             <div class="hero-badge reveal-up">
                 <span class="badge-dot"></span>
-                Available for opportunities
+                Open to Work
             </div>
             <h1 class="hero-title reveal-up">
-                Hi, I'm <span class="gradient-text">Karthik Kumar Raju</span>
+                I craft <span class="gradient-text">Web3</span> &amp;
+                <span class="gradient-text">Full-Stack</span> experiences
             </h1>
             <div class="hero-roles reveal-up">
                 <span id="typedRole"></span><span class="typed-cursor">|</span>
             </div>
             <p class="hero-desc reveal-up">
-                Full-Stack Developer &amp; Security Engineer based in Bangalore, India.
-                I build secure, scalable web applications and explore the frontiers of Web3 &amp; Blockchain technology.
+                Blockchain developer &amp; full-stack engineer building decentralized applications,
+                smart contracts, and modern web platforms from Bangalore, India.
             </p>
             <div class="hero-buttons reveal-up">
                 <a href="#projects" class="btn btn-primary">
-                    <span>View Projects</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-down"></i>
                 </a>
-                <a href="#contact" class="btn btn-ghost">
-                    <span>Contact Me</span>
+                <a href="#contact" class="btn btn-outline">
+                    <span>Get In Touch</span>
                 </a>
-                <a href="karthik_cv.pdf" class="btn btn-ghost" download>
+                <a href="karthik_cv.pdf" class="btn btn-outline" download>
                     <i class="fas fa-download"></i>
                     <span>Resume</span>
                 </a>
@@ -80,27 +86,31 @@
         <div class="hero-visual reveal-right">
             <div class="hero-card">
                 <div class="card-header">
-                    <div class="card-dots">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <span class="card-filename">karthik.py</span>
+                    <div class="card-dots"><span></span><span></span><span></span></div>
+                    <span class="card-filename">developer.sol</span>
                 </div>
-                <pre class="card-code"><code><span class="kw">class</span> <span class="cls">Developer</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(self):
-        self.name = <span class="str">"Karthik Kumar Raju"</span>
-        self.role = <span class="str">"Full-Stack Developer"</span>
-        self.location = <span class="str">"Bangalore, IN"</span>
-        self.stack = [
-            <span class="str">"Python"</span>, <span class="str">"JavaScript"</span>,
-            <span class="str">"Web3"</span>, <span class="str">"Blockchain"</span>,
-            <span class="str">"Flask"</span>, <span class="str">"React"</span>
-        ]
+                <pre class="card-code"><code><span class="cmt">// SPDX-License-Identifier: MIT</span>
+<span class="kw">pragma</span> solidity ^0.8.19;
 
-    <span class="kw">def</span> <span class="fn">build</span>(self):
-        <span class="kw">return</span> <span class="str">"Secure &amp; scalable apps"</span></code></pre>
+<span class="kw">contract</span> <span class="cls">KarthikPortfolio</span> {
+    <span class="kw">string public</span> name = <span class="str">"Karthik Kumar Raju"</span>;
+    <span class="kw">string public</span> role = <span class="str">"Web3 Developer"</span>;
+    <span class="kw">string public</span> stack = <span class="str">"Solidity, React, Node"</span>;
+
+    <span class="kw">function</span> <span class="fn">build</span>() <span class="kw">public pure returns</span>(<span class="kw">string memory</span>) {
+        <span class="kw">return</span> <span class="str">"Decentralized future"</span>;
+    }
+}</code></pre>
+            </div>
+            <div class="floating-badges">
+                <span class="fbadge fbadge-1"><i class="fab fa-ethereum"></i></span>
+                <span class="fbadge fbadge-2"><i class="fab fa-react"></i></span>
+                <span class="fbadge fbadge-3"><i class="fab fa-python"></i></span>
+                <span class="fbadge fbadge-4"><i class="fas fa-cube"></i></span>
             </div>
         </div>
-        <div class="scroll-hint">
+        <div class="scroll-indicator">
+            <span>Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -109,55 +119,53 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">About</span>
-                <h2 class="section-title">Get to know me</h2>
+                <span class="section-tag"><i class="fas fa-user"></i> About</span>
+                <h2 class="section-title">Building the decentralized web</h2>
             </div>
             <div class="about-grid">
                 <div class="about-text reveal-left">
                     <p class="about-lead">
-                        I'm a <strong>Full-Stack Developer</strong> and <strong>Security Engineer</strong>
-                        with a passion for building robust applications and ensuring they're bulletproof.
+                        I'm a <strong>Web3/Blockchain Developer</strong> and <strong>Full-Stack Engineer</strong>
+                        who bridges decentralized and traditional web technologies.
                     </p>
                     <p>
-                        With expertise spanning <strong>Web2</strong> and <strong>Web3/Blockchain</strong> development,
-                        I bring a unique perspective that combines modern software engineering with deep security knowledge.
-                        I write code that's not just functional &mdash; it's secure by design.
+                        I specialize in building <strong>smart contracts</strong>, <strong>DApps</strong>, and
+                        <strong>full-stack web applications</strong> using Solidity, React, Python, and Node.js.
+                        From deploying on Ethereum to building production-grade APIs, I deliver end-to-end solutions
+                        that are secure, scalable, and user-focused.
                     </p>
                     <p>
-                        Currently based in Bangalore, I'm an active member of the developer community &mdash;
-                        organizing meetups, contributing to OWASP, and always learning.
+                        Beyond coding, I'm deeply involved in the developer community &mdash; organizing
+                        <strong>The Hackers Meetup</strong> in Bangalore, contributing to open-source projects,
+                        and staying at the cutting edge of blockchain innovation.
                     </p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Bangalore, India</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-briefcase"></i>
-                            <span>2+ Years Experience</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-certificate"></i>
-                            <span>6+ Certifications</span>
-                        </div>
+                    <div class="about-chips">
+                        <span class="chip"><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+                        <span class="chip"><i class="fas fa-rocket"></i> 2+ Years Building</span>
+                        <span class="chip"><i class="fas fa-certificate"></i> 6+ Certifications</span>
+                        <span class="chip"><i class="fab fa-ethereum"></i> Web3 & Blockchain</span>
                     </div>
                 </div>
-                <div class="about-stats reveal-right">
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="2">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Years of Experience</span>
+                <div class="about-metrics reveal-right">
+                    <div class="metric-card">
+                        <div class="metric-value"><span class="stat-number" data-count="2">0</span>+</div>
+                        <div class="metric-label">Years Building</div>
+                        <div class="metric-bar"><div class="metric-fill" style="width: 40%"></div></div>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Projects Completed</span>
+                    <div class="metric-card">
+                        <div class="metric-value"><span class="stat-number" data-count="10">0</span>+</div>
+                        <div class="metric-label">Projects Shipped</div>
+                        <div class="metric-bar"><div class="metric-fill" style="width: 65%"></div></div>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="6">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Certifications</span>
+                    <div class="metric-card">
+                        <div class="metric-value"><span class="stat-number" data-count="6">0</span>+</div>
+                        <div class="metric-label">Certifications</div>
+                        <div class="metric-bar"><div class="metric-fill" style="width: 55%"></div></div>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="8">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Technologies</span>
+                    <div class="metric-card">
+                        <div class="metric-value"><span class="stat-number" data-count="5">0</span>+</div>
+                        <div class="metric-label">Blockchain Projects</div>
+                        <div class="metric-bar"><div class="metric-fill" style="width: 50%"></div></div>
                     </div>
                 </div>
             </div>
@@ -168,136 +176,134 @@
     <section id="skills" class="section section-alt">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Skills</span>
-                <h2 class="section-title">My Tech Stack</h2>
+                <span class="section-tag"><i class="fas fa-layer-group"></i> Skills</span>
+                <h2 class="section-title">Tech I work with</h2>
             </div>
             <div class="skills-tabs">
                 <div class="tab-buttons reveal-up">
-                    <button class="tab-btn active" data-tab="development">Development</button>
-                    <button class="tab-btn" data-tab="security">Security</button>
-                    <button class="tab-btn" data-tab="tools">Tools & Platforms</button>
+                    <button class="tab-btn active" data-tab="blockchain">
+                        <i class="fab fa-ethereum"></i> Blockchain
+                    </button>
+                    <button class="tab-btn" data-tab="frontend">
+                        <i class="fas fa-palette"></i> Frontend
+                    </button>
+                    <button class="tab-btn" data-tab="backend">
+                        <i class="fas fa-server"></i> Backend
+                    </button>
+                    <button class="tab-btn" data-tab="tools">
+                        <i class="fas fa-wrench"></i> DevOps & Tools
+                    </button>
                 </div>
 
-                <div class="tab-content active" id="tab-development">
+                <div class="tab-content active" id="tab-blockchain">
                     <div class="skills-grid">
                         <div class="skill-tile reveal-up">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                            <div class="skill-level"><div class="level-fill" data-width="92"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fab fa-js-square"></i>
-                            <span>JavaScript</span>
+                            <div class="skill-icon-wrap"><i class="fas fa-gem"></i></div>
+                            <span class="skill-name">Solidity</span>
                             <div class="skill-level"><div class="level-fill" data-width="85"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fab fa-php"></i>
-                            <span>PHP</span>
-                            <div class="skill-level"><div class="level-fill" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fab fa-java"></i>
-                            <span>Java</span>
-                            <div class="skill-level"><div class="level-fill" data-width="72"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-gem"></i>
-                            <span>Solidity</span>
-                            <div class="skill-level"><div class="level-fill" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-terminal"></i>
-                            <span>Bash</span>
-                            <div class="skill-level"><div class="level-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
-                            <div class="skill-level"><div class="level-fill" data-width="78"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-cube"></i>
-                            <span>Web3.js</span>
+                            <div class="skill-icon-wrap"><i class="fab fa-ethereum"></i></div>
+                            <span class="skill-name">Ethereum</span>
                             <div class="skill-level"><div class="level-fill" data-width="82"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-flask-vial"></i>
-                            <span>Flask</span>
-                            <div class="skill-level"><div class="level-fill" data-width="88"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-c"></i>
-                            <span>C / C++</span>
-                            <div class="skill-level"><div class="level-fill" data-width="70"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-code"></i>
-                            <span>PowerShell</span>
+                            <div class="skill-icon-wrap"><i class="fas fa-cube"></i></div>
+                            <span class="skill-name">Web3.js / Ethers.js</span>
                             <div class="skill-level"><div class="level-fill" data-width="85"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-scroll"></i>
-                            <span>Perl</span>
-                            <div class="skill-level"><div class="level-fill" data-width="60"></div></div>
+                            <div class="skill-icon-wrap"><i class="fas fa-hard-hat"></i></div>
+                            <span class="skill-name">Hardhat / Foundry</span>
+                            <div class="skill-level"><div class="level-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fas fa-file-contract"></i></div>
+                            <span class="skill-name">Smart Contracts</span>
+                            <div class="skill-level"><div class="level-fill" data-width="88"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fas fa-coins"></i></div>
+                            <span class="skill-name">DeFi / NFTs</span>
+                            <div class="skill-level"><div class="level-fill" data-width="75"></div></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tab-content" id="tab-security">
+                <div class="tab-content" id="tab-frontend">
                     <div class="skills-grid">
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-globe"></i>
-                            <span>Web App VAPT</span>
-                            <div class="skill-level"><div class="level-fill" data-width="95"></div></div>
+                            <div class="skill-icon-wrap"><i class="fab fa-react"></i></div>
+                            <span class="skill-name">React / Next.js</span>
+                            <div class="skill-level"><div class="level-fill" data-width="85"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-network-wired"></i>
-                            <span>Network VAPT</span>
-                            <div class="skill-level"><div class="level-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-tile reveal-up">
-                            <i class="fas fa-plug"></i>
-                            <span>API Pentesting</span>
+                            <div class="skill-icon-wrap"><i class="fab fa-js-square"></i></div>
+                            <span class="skill-name">JavaScript / TypeScript</span>
                             <div class="skill-level"><div class="level-fill" data-width="88"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-server"></i>
-                            <span>Active Directory</span>
+                            <div class="skill-icon-wrap"><i class="fab fa-html5"></i></div>
+                            <span class="skill-name">HTML5 / CSS3</span>
+                            <div class="skill-level"><div class="level-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fas fa-wind"></i></div>
+                            <span class="skill-name">Tailwind CSS</span>
+                            <div class="skill-level"><div class="level-fill" data-width="82"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-backend">
+                    <div class="skills-grid">
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fab fa-python"></i></div>
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level"><div class="level-fill" data-width="92"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fab fa-node-js"></i></div>
+                            <span class="skill-name">Node.js / Express</span>
                             <div class="skill-level"><div class="level-fill" data-width="82"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-arrow-up-right-dots"></i>
-                            <span>Privilege Escalation</span>
-                            <div class="skill-level"><div class="level-fill" data-width="87"></div></div>
+                            <div class="skill-icon-wrap"><i class="fas fa-flask-vial"></i></div>
+                            <span class="skill-name">Flask / Django</span>
+                            <div class="skill-level"><div class="level-fill" data-width="88"></div></div>
                         </div>
                         <div class="skill-tile reveal-up">
-                            <i class="fas fa-shield-halved"></i>
-                            <span>OWASP Top 10</span>
-                            <div class="skill-level"><div class="level-fill" data-width="95"></div></div>
+                            <div class="skill-icon-wrap"><i class="fas fa-database"></i></div>
+                            <span class="skill-name">PostgreSQL / MongoDB</span>
+                            <div class="skill-level"><div class="level-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fas fa-plug"></i></div>
+                            <span class="skill-name">REST APIs / GraphQL</span>
+                            <div class="skill-level"><div class="level-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-tile reveal-up">
+                            <div class="skill-icon-wrap"><i class="fab fa-java"></i></div>
+                            <span class="skill-name">Java / C++</span>
+                            <div class="skill-level"><div class="level-fill" data-width="72"></div></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-content" id="tab-tools">
                     <div class="tools-cloud">
-                        <span class="tool-chip reveal-up"><i class="fab fa-linux"></i> Kali Linux</span>
-                        <span class="tool-chip reveal-up"><i class="fab fa-ubuntu"></i> Ubuntu</span>
-                        <span class="tool-chip reveal-up"><i class="fab fa-windows"></i> Windows Server</span>
-                        <span class="tool-chip reveal-up"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="tool-chip reveal-up"><i class="fab fa-git-alt"></i> Git & GitHub</span>
                         <span class="tool-chip reveal-up"><i class="fab fa-docker"></i> Docker</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-spider"></i> Burp Suite</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-crosshairs"></i> Metasploit</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-radar"></i> Nmap</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-wave-square"></i> Wireshark</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-mobile-screen"></i> Frida</span>
+                        <span class="tool-chip reveal-up"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="tool-chip reveal-up"><i class="fab fa-aws"></i> AWS</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-triangle-exclamation"></i> Vercel</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-terminal"></i> Bash / Shell</span>
                         <span class="tool-chip reveal-up"><i class="fas fa-paper-plane"></i> Postman</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-database"></i> SQLmap</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-key"></i> Impacket</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-folder-open"></i> Gobuster</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-search"></i> Nikto</span>
-                        <span class="tool-chip reveal-up"><i class="fab fa-ethereum"></i> Hardhat</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-fire"></i> Nessus</span>
-                        <span class="tool-chip reveal-up"><i class="fas fa-shield"></i> pfSense</span>
+                        <span class="tool-chip reveal-up"><i class="fab fa-figma"></i> Figma</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-cubes"></i> IPFS</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-shield-halved"></i> Security Auditing</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-vial"></i> Testing (Jest, Mocha)</span>
+                        <span class="tool-chip reveal-up"><i class="fas fa-sitemap"></i> CI/CD Pipelines</span>
                     </div>
                 </div>
             </div>
@@ -308,28 +314,28 @@
     <section id="experience" class="section">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Experience</span>
-                <h2 class="section-title">Where I've Worked</h2>
+                <span class="section-tag"><i class="fas fa-briefcase"></i> Experience</span>
+                <h2 class="section-title">Where I've worked</h2>
             </div>
             <div class="exp-timeline">
                 <div class="exp-item reveal-up">
-                    <div class="exp-dot"></div>
+                    <div class="exp-dot"><div class="exp-pulse"></div></div>
                     <div class="exp-card">
                         <div class="exp-top">
                             <div>
-                                <h3 class="exp-role">Freelance Developer & Security Engineer</h3>
+                                <h3 class="exp-role">Freelance Web3 & Full-Stack Developer</h3>
                                 <p class="exp-company">Self-Employed <span class="exp-location"><i class="fas fa-globe"></i> Remote</span></p>
                             </div>
                             <span class="exp-date">Feb 2024 &mdash; Present</span>
                         </div>
                         <ul class="exp-list">
-                            <li>Built and deployed full-stack web applications and Web3 DApps for clients using Python, JavaScript, React, and Solidity</li>
-                            <li>Conducted end-to-end VAPT on web applications, APIs, and network infrastructures for private sector clients</li>
-                            <li>Performed security assessments covering OWASP Top 10, API security, and LAN/WAN infrastructure pentesting</li>
-                            <li>Delivered secure, production-ready code with integrated security testing throughout the development lifecycle</li>
+                            <li>Architected and deployed decentralized applications (DApps) with Solidity smart contracts, React frontends, and Web3.js/Ethers.js integration</li>
+                            <li>Built full-stack web platforms for clients using Python, Node.js, React, and PostgreSQL with CI/CD deployment pipelines</li>
+                            <li>Developed and audited smart contracts for DeFi protocols, NFT marketplaces, and token-based systems on Ethereum and L2 chains</li>
+                            <li>Delivered end-to-end blockchain solutions including wallet integration, on-chain data indexing, and gas-optimized contract architectures</li>
                         </ul>
                         <div class="exp-tags">
-                            <span>React</span><span>Web3</span><span>Python</span><span>WAPT</span><span>Network VAPT</span><span>API Security</span>
+                            <span>Solidity</span><span>React</span><span>Web3.js</span><span>Node.js</span><span>Python</span><span>Smart Contracts</span>
                         </div>
                     </div>
                 </div>
@@ -339,18 +345,18 @@
                     <div class="exp-card">
                         <div class="exp-top">
                             <div>
-                                <h3 class="exp-role">Jr. Security Intern</h3>
+                                <h3 class="exp-role">Jr. Blockchain & Web Developer</h3>
                                 <p class="exp-company">Reinfosec <span class="exp-location"><i class="fas fa-map-marker-alt"></i> Bangalore</span></p>
                             </div>
                             <span class="exp-date">Sep 2024 &mdash; Feb 2025</span>
                         </div>
                         <ul class="exp-list">
-                            <li>Assisted in WAPT and VAPT engagements, identifying SQLi, XSS, and CSRF vulnerabilities</li>
-                            <li>Documented vulnerability findings with actionable remediation reports</li>
-                            <li>Gained hands-on exposure to penetration testing tools and methodologies</li>
+                            <li>Built secure web applications and RESTful APIs with integrated blockchain functionality for enterprise clients</li>
+                            <li>Developed frontend interfaces using React and connected them to smart contracts via Web3 libraries</li>
+                            <li>Implemented secure authentication flows, API endpoints, and database architectures following best practices</li>
                         </ul>
                         <div class="exp-tags">
-                            <span>SQLi</span><span>XSS</span><span>CSRF</span><span>API Security</span>
+                            <span>React</span><span>REST API</span><span>Web3</span><span>Flask</span><span>PostgreSQL</span>
                         </div>
                     </div>
                 </div>
@@ -360,17 +366,18 @@
                     <div class="exp-card">
                         <div class="exp-top">
                             <div>
-                                <h3 class="exp-role">Security Researcher</h3>
+                                <h3 class="exp-role">Software Developer & Researcher</h3>
                                 <p class="exp-company">Association For Cybersecurity <span class="exp-location"><i class="fas fa-globe"></i> Remote</span></p>
                             </div>
                             <span class="exp-date">Mar 2024 &mdash; Jan 2025</span>
                         </div>
                         <ul class="exp-list">
-                            <li>Conducted security research on emerging web and network exploitation techniques</li>
-                            <li>Developed learning materials educating students on cybersecurity fundamentals and best practices</li>
+                            <li>Built web-based tools and dashboards for security research visualization and data analysis</li>
+                            <li>Developed educational platforms and interactive learning modules using Python, JavaScript, and Flask</li>
+                            <li>Contributed to open-source projects and created developer-focused documentation and tutorials</li>
                         </ul>
                         <div class="exp-tags">
-                            <span>Research</span><span>Education</span><span>Community</span>
+                            <span>Python</span><span>JavaScript</span><span>Flask</span><span>Open Source</span><span>Education</span>
                         </div>
                     </div>
                 </div>
@@ -382,47 +389,52 @@
     <section id="projects" class="section section-alt">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Projects</span>
-                <h2 class="section-title">Things I've Built</h2>
+                <span class="section-tag"><i class="fas fa-rocket"></i> Projects</span>
+                <h2 class="section-title">Things I've built</h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card featured reveal-up">
                     <div class="project-img-placeholder">
-                        <i class="fas fa-industry"></i>
+                        <i class="fab fa-ethereum"></i>
+                        <div class="project-overlay">
+                            <span class="project-badge">Featured Project</span>
+                        </div>
                     </div>
                     <div class="project-body">
                         <div class="project-top">
-                            <span class="project-label">Featured</span>
-                            <span class="project-year">2026</span>
+                            <span class="project-label">Web3 / DApp</span>
+                            <div class="project-links-row">
+                                <a href="https://github.com/MRALPHA20/portfolioweb3" target="_blank" class="project-github"><i class="fab fa-github"></i></a>
+                            </div>
                         </div>
-                        <h3>ICS/SCADA Cybersecurity Lab</h3>
+                        <h3>Web3 Portfolio DApp</h3>
                         <p>
-                            Designed a 4-VM lab simulating an ICS/OT plant network with intentional misconfigurations
-                            for attack-defense research. Features Modbus TCP server, Flask/Nginx HMI, SMB file server
-                            with CTF flags, and Ligolo-ng tunneling for pivoting.
+                            Decentralized portfolio application with MetaMask wallet integration,
+                            smart contract interactions on Ethereum, and a modern React frontend
+                            showcasing the fusion of blockchain &amp; web development.
                         </p>
                         <div class="project-tech">
-                            <span>Vagrant</span><span>VirtualBox</span><span>pymodbus</span><span>Flask</span><span>Ligolo-ng</span>
+                            <span>Solidity</span><span>React</span><span>Ethers.js</span><span>Hardhat</span><span>IPFS</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card reveal-up">
                     <div class="project-img-placeholder">
-                        <i class="fas fa-network-wired"></i>
+                        <i class="fas fa-industry"></i>
                     </div>
                     <div class="project-body">
                         <div class="project-top">
-                            <span class="project-label">Infrastructure</span>
-                            <span class="project-year">2024</span>
+                            <span class="project-label">IoT / Infrastructure</span>
+                            <span class="project-year">2026</span>
                         </div>
-                        <h3>Home Network Security Lab</h3>
+                        <h3>ICS/SCADA Cybersecurity Lab</h3>
                         <p>
-                            Configured pfSense firewall and Suricata IDS for multi-device network monitoring.
-                            Regular vulnerability assessments with Nessus maintaining a hardened baseline.
+                            4-VM lab simulating an ICS/OT plant network with Modbus TCP, Flask/Nginx HMI,
+                            SMB server, and Ligolo-ng tunneling &mdash; built as a full-stack security research environment.
                         </p>
                         <div class="project-tech">
-                            <span>pfSense</span><span>Suricata IDS</span><span>Nessus</span>
+                            <span>Vagrant</span><span>Flask</span><span>Python</span><span>Networking</span>
                         </div>
                     </div>
                 </div>
@@ -433,16 +445,16 @@
                     </div>
                     <div class="project-body">
                         <div class="project-top">
-                            <span class="project-label">Web App</span>
+                            <span class="project-label">Full-Stack</span>
                             <a href="https://github.com/Paranjay-pandu/terrasight" target="_blank" class="project-github"><i class="fab fa-github"></i></a>
                         </div>
                         <h3>TerraSight</h3>
                         <p>
-                            A geospatial intelligence and terrain analysis platform leveraging satellite data
-                            and mapping APIs for advanced visualization and environmental monitoring.
+                            Geospatial intelligence platform with satellite data integration, mapping APIs,
+                            and advanced terrain visualization for environmental monitoring.
                         </p>
                         <div class="project-tech">
-                            <span>Web App</span><span>GIS</span><span>Analytics</span><span>Maps</span>
+                            <span>React</span><span>Node.js</span><span>GIS APIs</span><span>Maps</span>
                         </div>
                     </div>
                 </div>
@@ -458,31 +470,31 @@
                         </div>
                         <h3>Stock Forecaster</h3>
                         <p>
-                            AI-powered stock market prediction tool using machine learning models and
-                            historical data for price trend forecasting and actionable trading insights.
+                            AI-powered stock prediction tool using machine learning models with Python
+                            for trend forecasting and actionable trading insights.
                         </p>
                         <div class="project-tech">
-                            <span>Python</span><span>ML</span><span>Data Science</span><span>Finance</span>
+                            <span>Python</span><span>TensorFlow</span><span>Flask</span><span>Data Science</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card reveal-up">
                     <div class="project-img-placeholder">
-                        <i class="fab fa-ethereum"></i>
+                        <i class="fas fa-network-wired"></i>
                     </div>
                     <div class="project-body">
                         <div class="project-top">
-                            <span class="project-label">Web3</span>
-                            <a href="https://github.com/MRALPHA20/portfolioweb3" target="_blank" class="project-github"><i class="fab fa-github"></i></a>
+                            <span class="project-label">DevOps</span>
+                            <span class="project-year">2024</span>
                         </div>
-                        <h3>Web3 Portfolio DApp</h3>
+                        <h3>Home Network Lab</h3>
                         <p>
-                            Decentralized portfolio application with wallet integration, blockchain interactions,
-                            and modern frontend showcasing security meets blockchain development.
+                            Self-hosted infrastructure lab with pfSense, Suricata IDS, and automated
+                            monitoring &mdash; a hands-on environment for networking and DevOps skills.
                         </p>
                         <div class="project-tech">
-                            <span>Web3</span><span>Solidity</span><span>Ethers.js</span><span>DApp</span>
+                            <span>pfSense</span><span>Suricata</span><span>Docker</span><span>Linux</span>
                         </div>
                     </div>
                 </div>
@@ -494,56 +506,58 @@
     <section id="certifications" class="section">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Certifications</span>
-                <h2 class="section-title">Credentials & Achievements</h2>
+                <span class="section-tag"><i class="fas fa-trophy"></i> Certifications</span>
+                <h2 class="section-title">Credentials I've earned</h2>
             </div>
-            <div class="certs-grid">
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon microsoft"><i class="fab fa-microsoft"></i></div>
-                    <div class="cert-info">
-                        <h3>Azure Security Engineer Associate</h3>
-                        <span class="cert-code">AZ-500</span>
-                        <p>Microsoft</p>
+            <div class="certs-marquee">
+                <div class="certs-track">
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon microsoft"><i class="fab fa-microsoft"></i></div>
+                        <div class="cert-info">
+                            <h3>Azure Security Engineer</h3>
+                            <span class="cert-code">AZ-500</span>
+                            <p>Microsoft</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon google"><i class="fab fa-google"></i></div>
-                    <div class="cert-info">
-                        <h3>Cybersecurity Professional</h3>
-                        <span class="cert-code">GCC</span>
-                        <p>Google</p>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon google"><i class="fab fa-google"></i></div>
+                        <div class="cert-info">
+                            <h3>Cybersecurity Professional</h3>
+                            <span class="cert-code">GCC</span>
+                            <p>Google</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon secops"><i class="fas fa-network-wired"></i></div>
-                    <div class="cert-info">
-                        <h3>Certified Network Pentester</h3>
-                        <span class="cert-code">CNPen</span>
-                        <p>SecOps Group</p>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon secops"><i class="fas fa-network-wired"></i></div>
+                        <div class="cert-info">
+                            <h3>Certified Network Pentester</h3>
+                            <span class="cert-code">CNPen</span>
+                            <p>SecOps Group</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon blockchain"><i class="fas fa-cube"></i></div>
-                    <div class="cert-info">
-                        <h3>Blockchain Practitioner</h3>
-                        <span class="cert-code">CBP</span>
-                        <p>SecOps Group</p>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon blockchain"><i class="fas fa-cube"></i></div>
+                        <div class="cert-info">
+                            <h3>Blockchain Practitioner</h3>
+                            <span class="cert-code">CBP</span>
+                            <p>SecOps Group</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon secops"><i class="fas fa-shield-halved"></i></div>
-                    <div class="cert-info">
-                        <h3>Network Security Practitioner</h3>
-                        <span class="cert-code">CNSP</span>
-                        <p>SecOps Group</p>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon secops"><i class="fas fa-shield-halved"></i></div>
+                        <div class="cert-info">
+                            <h3>Network Security Practitioner</h3>
+                            <span class="cert-code">CNSP</span>
+                            <p>SecOps Group</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cert-card reveal-up">
-                    <div class="cert-icon htb"><i class="fas fa-skull"></i></div>
-                    <div class="cert-info">
-                        <h3>Penetration Tester Level I</h3>
-                        <span class="cert-code">Dante Pro Lab</span>
-                        <p>HackTheBox</p>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-icon htb"><i class="fas fa-skull"></i></div>
+                        <div class="cert-info">
+                            <h3>Penetration Tester Level I</h3>
+                            <span class="cert-code">Dante Pro Lab</span>
+                            <p>HackTheBox</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,28 +568,28 @@
     <section id="community" class="section section-alt">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Community</span>
+                <span class="section-tag"><i class="fas fa-users"></i> Community</span>
                 <h2 class="section-title">Community & Events</h2>
             </div>
             <div class="community-grid">
                 <div class="community-card reveal-up">
-                    <div class="community-icon"><i class="fas fa-users"></i></div>
+                    <div class="community-icon"><i class="fas fa-people-group"></i></div>
                     <h3>Communities</h3>
                     <ul>
-                        <li><i class="fas fa-chevron-right"></i> OWASP Bangalore Associate</li>
-                        <li><i class="fas fa-chevron-right"></i> DEFCON Member</li>
-                        <li><i class="fas fa-chevron-right"></i> Google Developer Groups</li>
-                        <li><i class="fas fa-chevron-right"></i> The Hackers Meetup Organizer, Bangalore</li>
+                        <li><span class="bullet"></span> OWASP Bangalore Associate</li>
+                        <li><span class="bullet"></span> DEFCON Member</li>
+                        <li><span class="bullet"></span> Google Developer Groups</li>
+                        <li><span class="bullet"></span> The Hackers Meetup Organizer, Bangalore</li>
                     </ul>
                 </div>
                 <div class="community-card reveal-up">
-                    <div class="community-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="community-icon"><i class="fas fa-calendar-days"></i></div>
                     <h3>Conferences</h3>
                     <ul>
-                        <li><i class="fas fa-chevron-right"></i> Seasides 2025</li>
-                        <li><i class="fas fa-chevron-right"></i> Google DevFest 2024</li>
-                        <li><i class="fas fa-chevron-right"></i> Google Build With AI 2024</li>
-                        <li><i class="fas fa-chevron-right"></i> ContentStack Meetup 2024</li>
+                        <li><span class="bullet"></span> Seasides 2025</li>
+                        <li><span class="bullet"></span> Google DevFest 2024</li>
+                        <li><span class="bullet"></span> Google Build With AI 2024</li>
+                        <li><span class="bullet"></span> ContentStack Meetup 2024</li>
                     </ul>
                 </div>
             </div>
@@ -586,47 +600,47 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-header reveal-up">
-                <span class="section-tag">Contact</span>
-                <h2 class="section-title">Let's Work Together</h2>
-                <p class="section-subtitle">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+                <span class="section-tag"><i class="fas fa-paper-plane"></i> Contact</span>
+                <h2 class="section-title">Let's build something together</h2>
+                <p class="section-subtitle">Got a Web3 project or full-stack idea? Let's talk.</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-links reveal-left">
-                    <a href="mailto:karthikumaraju@gmail.com" class="contact-card-link">
-                        <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
+                    <a href="mailto:karthikumaraju@gmail.com" class="contact-link-card">
+                        <div class="clc-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="clc-text">
                             <h4>Email</h4>
                             <span>karthikumaraju@gmail.com</span>
                         </div>
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right clc-arrow"></i>
                     </a>
-                    <a href="tel:+918550868583" class="contact-card-link">
-                        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
-                        <div>
+                    <a href="tel:+918550868583" class="contact-link-card">
+                        <div class="clc-icon"><i class="fas fa-phone"></i></div>
+                        <div class="clc-text">
                             <h4>Phone</h4>
                             <span>+91 8550868583</span>
                         </div>
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right clc-arrow"></i>
                     </a>
-                    <a href="https://linkedin.com/in/karthikumaraju" target="_blank" class="contact-card-link">
-                        <div class="contact-card-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div>
+                    <a href="https://linkedin.com/in/karthikumaraju" target="_blank" class="contact-link-card">
+                        <div class="clc-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="clc-text">
                             <h4>LinkedIn</h4>
                             <span>linkedin.com/in/karthikumaraju</span>
                         </div>
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right clc-arrow"></i>
                     </a>
-                    <a href="https://github.com/MRALPHA20" target="_blank" class="contact-card-link">
-                        <div class="contact-card-icon"><i class="fab fa-github"></i></div>
-                        <div>
+                    <a href="https://github.com/MRALPHA20" target="_blank" class="contact-link-card">
+                        <div class="clc-icon"><i class="fab fa-github"></i></div>
+                        <div class="clc-text">
                             <h4>GitHub</h4>
                             <span>github.com/MRALPHA20</span>
                         </div>
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right clc-arrow"></i>
                     </a>
-                    <div class="contact-card-link location">
-                        <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
-                        <div>
+                    <div class="contact-link-card no-hover">
+                        <div class="clc-icon"><i class="fas fa-location-dot"></i></div>
+                        <div class="clc-text">
                             <h4>Location</h4>
                             <span>Bangalore, India</span>
                         </div>
@@ -640,12 +654,12 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                        <input type="text" id="subject" name="subject" placeholder="Project inquiry..." required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
@@ -653,7 +667,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
                         <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
             </div>
@@ -664,8 +678,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
-                <a href="#home" class="footer-logo">
-                    <span class="logo-k">K</span><span class="logo-rest">arthik</span>
+                <a href="#home" class="nav-logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">karthik<span class="logo-accent">.dev</span></span>
                 </a>
                 <div class="footer-socials">
                     <a href="https://linkedin.com/in/karthikumaraju" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -674,8 +689,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Karthik Kumar Raju. All rights reserved.</p>
-                <p class="footer-credit">Designed & Developed with <i class="fas fa-heart"></i></p>
+                <p>&copy; 2026 Karthik Kumar Raju. Built with passion.</p>
             </div>
         </div>
     </footer>

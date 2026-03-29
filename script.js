@@ -5,11 +5,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ---------- TYPING ANIMATION ----------
     const roles = [
-        'Full-Stack Developer',
         'Web3 & Blockchain Developer',
-        'Security Engineer',
-        'API Developer',
-        'Penetration Tester',
+        'Full-Stack Engineer',
+        'Smart Contract Developer',
+        'DApp Builder',
+        'React & Node.js Developer',
         'Open Source Contributor'
     ];
     let roleIndex = 0;
