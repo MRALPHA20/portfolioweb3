@@ -756,10 +756,7 @@ ul { list-style: none; }
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(124, 58, 237, 0.35); }
 
-/* --- GSAP REVEALS (initial state set by JS) --- */
-.reveal-up, .reveal-left, .reveal-right {
-    visibility: hidden;
-}
+/* --- GSAP handles all animation states via JS --- */
 
 /* --- SCROLL PROGRESS BAR --- */
 .scroll-progress {

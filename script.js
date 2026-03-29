@@ -1,10 +1,10 @@
 /* ============================================
    KARTHIK KUMAR RAJU - PORTFOLIO
-   All animations powered by GSAP
+   All animations powered by GSAP + ScrollTrigger
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     document.body.classList.add('loading');
 
     // ========== PRELOADER ==========
@@ -23,24 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1.8,
             ease: 'power2.inOut',
             onUpdate: function () {
-                const progress = Math.round(this.progress() * 100);
-                preloaderPercent.textContent = progress + '%';
+                preloaderPercent.textContent = Math.round(this.progress() * 100) + '%';
             }
         }, '-=0.1')
-        .to('.preloader-inner', { opacity: 0, y: -30, duration: 0.5, ease: 'power3.in' }, '+=0.2')
+        .to('.preloader-inner', { opacity: 0, y: -30, duration: 0.5, ease: 'power3.in' }, '+=0.3')
         .to(preloader, {
-            opacity: 0,
+            autoAlpha: 0,
             duration: 0.5,
             ease: 'power2.inOut',
             onComplete: () => {
                 preloader.style.display = 'none';
                 document.body.classList.remove('loading');
-                initPage();
+                startPage();
             }
         }, '-=0.2');
 
-    // ========== INIT PAGE (after preloader) ==========
-    function initPage() {
+    // ========== START PAGE ==========
+    function startPage() {
         heroEntrance();
         initScrollAnimations();
         initNavbar();
@@ -53,129 +52,143 @@ document.addEventListener('DOMContentLoaded', () => {
         initParallax();
     }
 
-    // ========== HERO ENTRANCE ==========
+    // ========== HERO ENTRANCE TIMELINE ==========
     function heroEntrance() {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        tl.from('#navbar', { y: -80, opacity: 0, duration: 0.8 })
-          .from('.hero-badge', { y: 30, opacity: 0, duration: 0.6 }, '-=0.3')
-          .from('.hero-title', { y: 50, opacity: 0, duration: 0.8 }, '-=0.3')
-          .from('.hero-roles', { y: 30, opacity: 0, duration: 0.6 }, '-=0.4')
-          .from('.hero-desc', { y: 30, opacity: 0, duration: 0.6 }, '-=0.3')
-          .from('.hero-buttons', { y: 30, opacity: 0, duration: 0.6 }, '-=0.3')
-          .from('.hero-socials a', { y: 20, opacity: 0, duration: 0.4, stagger: 0.1 }, '-=0.3')
-          .from('.hero-card', { x: 80, opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.8')
-          .from('.fbadge', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(2)' }, '-=0.5')
-          .from('.scroll-indicator', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3');
+        tl.from('#navbar', { y: -80, autoAlpha: 0, duration: 0.8 })
+          .from('.hero-badge', { y: 30, autoAlpha: 0, duration: 0.6 }, '-=0.3')
+          .from('.hero-title', { y: 50, autoAlpha: 0, duration: 0.8 }, '-=0.3')
+          .from('.hero-roles', { y: 30, autoAlpha: 0, duration: 0.6 }, '-=0.4')
+          .from('.hero-desc', { y: 30, autoAlpha: 0, duration: 0.6 }, '-=0.3')
+          .from('.hero-buttons .btn', { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
+          .from('.hero-socials a', { y: 20, autoAlpha: 0, duration: 0.4, stagger: 0.08 }, '-=0.3')
+          .from('.hero-card', { x: 80, autoAlpha: 0, duration: 1, ease: 'power2.out' }, '-=0.8')
+          .from('.fbadge', { scale: 0, autoAlpha: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(2)' }, '-=0.5')
+          .from('.scroll-indicator', { autoAlpha: 0, y: 20, duration: 0.5 }, '-=0.3');
     }
 
-    // ========== SCROLL ANIMATIONS ==========
+    // ========== SCROLL-TRIGGERED ANIMATIONS ==========
     function initScrollAnimations() {
-        // Section headers
+
+        // --- Section headers ---
         gsap.utils.toArray('.section-header').forEach(header => {
             gsap.from(header, {
-                y: 60, opacity: 0, filter: 'blur(6px)',
+                y: 50, autoAlpha: 0, filter: 'blur(6px)',
                 duration: 0.9, ease: 'power3.out',
-                scrollTrigger: { trigger: header, start: 'top 85%', toggleActions: 'play none none none' }
+                scrollTrigger: { trigger: header, start: 'top 85%' }
             });
         });
 
-        // Reveal-up elements
-        gsap.utils.toArray('.reveal-up').forEach((el, i) => {
-            gsap.set(el, { visibility: 'visible' });
-            gsap.from(el, {
-                y: 50, opacity: 0, filter: 'blur(5px)',
-                duration: 0.8, ease: 'power3.out',
-                delay: (el.dataset.delay || 0) / 1000,
-                scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        // --- About text ---
+        gsap.from('.about-text', {
+            x: -50, autoAlpha: 0, duration: 0.9, ease: 'power3.out',
+            scrollTrigger: { trigger: '.about-text', start: 'top 85%' }
+        });
+
+        // --- About metrics (staggered cards) ---
+        gsap.from('.metric-card', {
+            y: 40, autoAlpha: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out',
+            scrollTrigger: { trigger: '.about-metrics', start: 'top 85%' }
+        });
+
+        // --- Stat counters ---
+        gsap.utils.toArray('.stat-number').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            const obj = { val: 0 };
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 85%',
+                onEnter: () => {
+                    gsap.to(obj, {
+                        val: target, duration: 2, ease: 'power2.out',
+                        onUpdate: () => { el.textContent = Math.floor(obj.val); }
+                    });
+                },
+                once: true
             });
         });
 
-        // Reveal-left
-        gsap.utils.toArray('.reveal-left').forEach(el => {
-            gsap.set(el, { visibility: 'visible' });
-            gsap.from(el, {
-                x: -60, opacity: 0, filter: 'blur(5px)',
-                duration: 0.9, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 85%' }
+        // --- Metric bars ---
+        gsap.utils.toArray('.metric-fill').forEach((fill, i) => {
+            const widths = [40, 65, 55, 50];
+            gsap.to(fill, {
+                width: (widths[i] || 50) + '%',
+                duration: 1.5, ease: 'power2.out',
+                scrollTrigger: { trigger: fill, start: 'top 90%' }
             });
         });
 
-        // Reveal-right
-        gsap.utils.toArray('.reveal-right').forEach(el => {
-            gsap.set(el, { visibility: 'visible' });
-            gsap.from(el, {
-                x: 60, opacity: 0, filter: 'blur(5px)',
-                duration: 0.9, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 85%' }
+        // --- Skill tab buttons ---
+        gsap.from('.tab-buttons', {
+            y: 30, autoAlpha: 0, duration: 0.6, ease: 'power3.out',
+            scrollTrigger: { trigger: '.tab-buttons', start: 'top 88%' }
+        });
+
+        // --- Active skill grid (blockchain tab - visible by default) ---
+        gsap.from('#tab-blockchain .skill-tile', {
+            y: 40, autoAlpha: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out',
+            scrollTrigger: { trigger: '#tab-blockchain', start: 'top 85%' }
+        });
+
+        // --- Skill bars ---
+        gsap.utils.toArray('.level-fill').forEach(fill => {
+            gsap.to(fill, {
+                width: fill.dataset.width + '%',
+                duration: 1.4, ease: 'power2.out',
+                scrollTrigger: { trigger: fill, start: 'top 92%' }
             });
         });
 
-        // Stagger grid items
-        ['.skills-grid', '.certs-track', '.tools-cloud', '.projects-grid', '.community-grid'].forEach(selector => {
-            const container = document.querySelector(selector);
-            if (!container) return;
-            const items = container.children;
-            gsap.from(items, {
-                y: 40, opacity: 0, filter: 'blur(4px)',
-                duration: 0.6, stagger: 0.08, ease: 'power3.out',
-                scrollTrigger: { trigger: container, start: 'top 85%' }
-            });
-        });
-
-        // Experience cards slide in
+        // --- Experience items ---
         gsap.utils.toArray('.exp-item').forEach((item, i) => {
             gsap.from(item, {
-                x: i % 2 === 0 ? -50 : 50,
-                opacity: 0, duration: 0.8, ease: 'power3.out',
+                y: 50, autoAlpha: 0, duration: 0.8, ease: 'power3.out',
+                delay: i * 0.15,
                 scrollTrigger: { trigger: item, start: 'top 85%' }
             });
         });
 
-        // Skill bars
-        gsap.utils.toArray('.level-fill').forEach(fill => {
-            gsap.to(fill, {
-                width: fill.dataset.width + '%',
-                duration: 1.5, ease: 'power2.out',
-                scrollTrigger: { trigger: fill, start: 'top 90%' }
-            });
+        // --- Project cards ---
+        gsap.from('.projects-grid .project-card', {
+            y: 50, autoAlpha: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.projects-grid', start: 'top 85%' }
         });
 
-        // Metric bars
-        gsap.utils.toArray('.metric-fill').forEach(fill => {
-            const parent = fill.closest('.metric-card');
-            const index = [...parent.parentElement.children].indexOf(parent);
-            const widths = [40, 65, 55, 50];
-            gsap.to(fill, {
-                width: (widths[index] || 50) + '%',
-                duration: 1.5, ease: 'power2.out',
-                scrollTrigger: { trigger: fill, start: 'top 90%' }
-            });
+        // --- Cert cards ---
+        gsap.from('.certs-track .cert-card', {
+            y: 40, autoAlpha: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out',
+            scrollTrigger: { trigger: '.certs-track', start: 'top 85%' }
         });
 
-        // Stat counters
-        gsap.utils.toArray('.stat-number').forEach(el => {
-            const target = parseInt(el.dataset.count);
-            const obj = { val: 0 };
-            gsap.to(obj, {
-                val: target,
-                duration: 2,
-                ease: 'power2.out',
-                scrollTrigger: { trigger: el, start: 'top 85%' },
-                onUpdate: () => { el.textContent = Math.floor(obj.val); }
-            });
+        // --- Community cards ---
+        gsap.from('.community-card', {
+            y: 40, autoAlpha: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out',
+            scrollTrigger: { trigger: '.community-grid', start: 'top 85%' }
         });
 
-        // Contact cards stagger
+        // --- Contact links ---
         gsap.from('.contact-link-card', {
-            x: -40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+            x: -40, autoAlpha: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out',
             scrollTrigger: { trigger: '.contact-links', start: 'top 80%' }
         });
 
-        // Contact form
+        // --- Contact form ---
         gsap.from('.contact-form', {
-            x: 60, opacity: 0, duration: 0.8, ease: 'power3.out',
+            x: 50, autoAlpha: 0, duration: 0.8, ease: 'power3.out',
             scrollTrigger: { trigger: '.contact-form', start: 'top 80%' }
+        });
+
+        // --- Tools cloud ---
+        gsap.from('.tools-cloud .tool-chip', {
+            y: 20, autoAlpha: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out',
+            scrollTrigger: { trigger: '.tools-cloud', start: 'top 85%' }
+        });
+
+        // --- Footer ---
+        gsap.from('.footer-top', {
+            y: 30, autoAlpha: 0, duration: 0.6, ease: 'power3.out',
+            scrollTrigger: { trigger: '.footer', start: 'top 90%' }
         });
     }
 
@@ -189,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             width: '100%',
             ease: 'none',
             scrollTrigger: {
-                trigger: document.body,
+                trigger: document.documentElement,
                 start: 'top top',
                 end: 'bottom bottom',
                 scrub: 0.3
@@ -204,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: (i + 1) * 150,
                 ease: 'none',
                 scrollTrigger: {
-                    trigger: document.body,
+                    trigger: document.documentElement,
                     start: 'top top',
                     end: 'bottom bottom',
                     scrub: true
@@ -300,7 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function typeRole() {
             const currentRole = roles[roleIndex];
-            if (isDeleting) { charIndex--; } else { charIndex++; }
+            if (isDeleting) charIndex--;
+            else charIndex++;
             typedEl.textContent = currentRole.substring(0, charIndex);
 
             let speed = isDeleting ? 30 : 70;
@@ -327,10 +341,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         content.classList.add('active');
 
                         // Animate items in
-                        gsap.from(content.children[0].children, {
-                            y: 30, opacity: 0, duration: 0.5,
-                            stagger: 0.06, ease: 'power3.out'
-                        });
+                        const items = content.querySelectorAll('.skill-tile, .tool-chip');
+                        gsap.fromTo(items,
+                            { y: 30, autoAlpha: 0 },
+                            { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out' }
+                        );
 
                         // Re-animate skill bars
                         content.querySelectorAll('.level-fill').forEach(fill => {
@@ -400,8 +415,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== SPOTLIGHT EFFECT ==========
+    // ========== SPOTLIGHT + HOVER EFFECTS ==========
     function initSpotlight() {
+        // Mouse-follow spotlight glow
         document.querySelectorAll('.project-card, .metric-card, .skill-tile, .cert-card, .community-card, .exp-card, .contact-link-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -410,45 +426,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Hover lift with GSAP
+        // GSAP hover lift on cards
         document.querySelectorAll('.project-card, .skill-tile, .cert-card, .metric-card, .tool-chip').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, { y: -6, duration: 0.3, ease: 'power2.out' });
-            });
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, { y: 0, duration: 0.4, ease: 'power2.out' });
-            });
+            card.addEventListener('mouseenter', () => gsap.to(card, { y: -6, duration: 0.3, ease: 'power2.out' }));
+            card.addEventListener('mouseleave', () => gsap.to(card, { y: 0, duration: 0.4, ease: 'power2.out' }));
         });
 
         // Experience card hover
         document.querySelectorAll('.exp-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, { x: 6, duration: 0.3, ease: 'power2.out' });
-            });
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, { x: 0, duration: 0.4, ease: 'power2.out' });
-            });
+            card.addEventListener('mouseenter', () => gsap.to(card, { x: 6, duration: 0.3, ease: 'power2.out' }));
+            card.addEventListener('mouseleave', () => gsap.to(card, { x: 0, duration: 0.4, ease: 'power2.out' }));
         });
 
-        // Contact card hover
+        // Contact link hover
         document.querySelectorAll('.contact-link-card:not(.no-hover)').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, { x: 8, duration: 0.3, ease: 'power2.out' });
-            });
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, { x: 0, duration: 0.4, ease: 'power2.out' });
-            });
+            card.addEventListener('mouseenter', () => gsap.to(card, { x: 8, duration: 0.3, ease: 'power2.out' }));
+            card.addEventListener('mouseleave', () => gsap.to(card, { x: 0, duration: 0.4, ease: 'power2.out' }));
         });
 
         // Hero card hover
         const heroCard = document.querySelector('.hero-card');
         if (heroCard) {
-            heroCard.addEventListener('mouseenter', () => {
-                gsap.to(heroCard, { y: -10, duration: 0.4, ease: 'power2.out' });
-            });
-            heroCard.addEventListener('mouseleave', () => {
-                gsap.to(heroCard, { y: 0, duration: 0.5, ease: 'power2.out' });
-            });
+            heroCard.addEventListener('mouseenter', () => gsap.to(heroCard, { y: -10, duration: 0.4, ease: 'power2.out' }));
+            heroCard.addEventListener('mouseleave', () => gsap.to(heroCard, { y: 0, duration: 0.5, ease: 'power2.out' }));
         }
 
         // Magnetic buttons
@@ -475,7 +475,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ripple.style.left = (e.clientX - rect.left) + 'px';
                 ripple.style.top = (e.clientY - rect.top) + 'px';
                 this.appendChild(ripple);
-
                 gsap.fromTo(ripple,
                     { scale: 0, opacity: 0.4 },
                     { scale: 1, opacity: 0, duration: 0.7, ease: 'power2.out', onComplete: () => ripple.remove() }
