@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik Kumar Raju | Game Portfolio</title>
+    <meta name="description" content="An interactive game-style portfolio of Karthik Kumar Raju">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== START SCREEN ========== -->
+    <div id="startScreen" class="start-screen">
+        <div class="scanlines"></div>
+        <div class="start-content">
+            <div class="game-title-wrapper">
+                <p class="game-subtitle-top">- WELCOME TO THE WORLD OF -</p>
+                <h1 class="game-title">
+                    <span class="title-line">KARTHIK</span>
+                    <span class="title-line accent">KUMAR RAJU</span>
+                </h1>
+                <p class="game-edition">~ Developer & Security Engineer ~</p>
+            </div>
+            <div class="pixel-character" id="startCharacter">
+                <div class="character-idle">
+                    <div class="char-head"></div>
+                    <div class="char-body"></div>
+                    <div class="char-legs">
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="start-btn" id="startBtn">
+                <span class="blink">PRESS START</span>
+            </button>
+            <div class="start-hint">
+                <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span> or <span class="key">Arrow Keys</span> to navigate
+            </div>
+            <p class="start-copy">&copy; 2026 Karthik Kumar Raju. All quests reserved.</p>
+        </div>
+    </div>
+
+    <!-- ========== HUD (Heads Up Display) ========== -->
+    <div id="hud" class="hud hidden">
+        <div class="hud-left">
+            <div class="hud-profile">
+                <div class="hud-avatar">
+                    <div class="mini-char">
+                        <div class="mc-head"></div>
+                        <div class="mc-body"></div>
+                    </div>
+                </div>
+                <div class="hud-info">
+                    <span class="hud-name">KARTHIK</span>
+                    <span class="hud-class">LVL 25 Developer</span>
+                </div>
+            </div>
+            <div class="hud-hp">
+                <span class="hp-label">HP</span>
+                <div class="hp-bar"><div class="hp-fill"></div></div>
+            </div>
+            <div class="hud-xp">
+                <span class="xp-label">XP</span>
+                <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+                <span class="xp-text" id="xpText">0 / 1000</span>
+            </div>
+        </div>
+        <div class="hud-center">
+            <div class="hud-level" id="hudLevel">WORLD 1 - ABOUT</div>
+        </div>
+        <div class="hud-right">
+            <div class="hud-score">
+                <span class="score-label">SCORE</span>
+                <span class="score-value" id="scoreValue">000000</span>
+            </div>
+            <div class="hud-coins">
+                <span class="coin-icon">&#9733;</span>
+                <span id="coinCount">0</span>
+            </div>
+            <button class="hud-sound" id="soundToggle" title="Toggle Sound">
+                <i class="fas fa-volume-up" id="soundIcon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ========== GAME NAV ========== -->
+    <nav id="gameNav" class="game-nav hidden">
+        <div class="level-select">
+            <a href="#about" class="level-btn active" data-level="1" data-world="WORLD 1 - ABOUT">
+                <span class="lvl-num">1</span>
+                <span class="lvl-name">About</span>
+            </a>
+            <span class="level-path">---</span>
+            <a href="#skills" class="level-btn" data-level="2" data-world="WORLD 2 - SKILLS">
+                <span class="lvl-num">2</span>
+                <span class="lvl-name">Skills</span>
+            </a>
+            <span class="level-path">---</span>
+            <a href="#experience" class="level-btn" data-level="3" data-world="WORLD 3 - QUESTS">
+                <span class="lvl-num">3</span>
+                <span class="lvl-name">Quests</span>
+            </a>
+            <span class="level-path">---</span>
+            <a href="#projects" class="level-btn" data-level="4" data-world="WORLD 4 - BUILDS">
+                <span class="lvl-num">4</span>
+                <span class="lvl-name">Builds</span>
+            </a>
+            <span class="level-path">---</span>
+            <a href="#achievements" class="level-btn" data-level="5" data-world="WORLD 5 - ACHIEVEMENTS">
+                <span class="lvl-num">5</span>
+                <span class="lvl-name">Achievements</span>
+            </a>
+            <span class="level-path">---</span>
+            <a href="#contact" class="level-btn" data-level="6" data-world="WORLD 6 - CONTACT">
+                <span class="lvl-num">6</span>
+                <span class="lvl-name">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN GAME WORLD ========== -->
+    <main id="gameWorld" class="game-world hidden">
+
+        <!-- WORLD 1: ABOUT -->
+        <section id="about" class="world" data-world="1">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 1</span>
+                    <h2>CHARACTER SELECT</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="about-game-grid">
+                    <div class="character-card reveal-up">
+                        <div class="char-display">
+                            <div class="big-character">
+                                <div class="bc-head"></div>
+                                <div class="bc-body"></div>
+                                <div class="bc-legs">
+                                    <div class="leg left"></div>
+                                    <div class="leg right"></div>
+                                </div>
+                            </div>
+                            <div class="char-platform"></div>
+                            <div class="char-name-tag">KARTHIK</div>
+                        </div>
+                        <div class="char-stats-mini">
+                            <div class="cstat"><span>ATK</span><div class="cstat-bar"><div class="cstat-fill" style="width:88%"></div></div></div>
+                            <div class="cstat"><span>DEF</span><div class="cstat-bar"><div class="cstat-fill" style="width:92%"></div></div></div>
+                            <div class="cstat"><span>SPD</span><div class="cstat-bar"><div class="cstat-fill" style="width:85%"></div></div></div>
+                            <div class="cstat"><span>INT</span><div class="cstat-bar"><div class="cstat-fill" style="width:95%"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="character-info reveal-up">
+                        <div class="dialog-box">
+                            <div class="dialog-header">
+                                <span class="dialog-speaker">KARTHIK</span>
+                                <span class="dialog-indicator">&#9660;</span>
+                            </div>
+                            <div class="dialog-text" id="dialogText">
+                                <p class="typing-text">"I'm a Full-Stack Developer & Security Engineer based in Bangalore, India. I build secure, scalable web applications and explore Web3 & Blockchain technology."</p>
+                            </div>
+                        </div>
+                        <div class="dialog-box">
+                            <div class="dialog-text">
+                                <p>"With expertise in both Web2 and Web3 development, I combine modern software engineering with deep security knowledge. I don't just write code &mdash; I make sure it's bulletproof."</p>
+                            </div>
+                        </div>
+                        <div class="info-cards">
+                            <div class="info-chip">
+                                <i class="fas fa-map-marker-alt"></i> Bangalore, India
+                            </div>
+                            <div class="info-chip">
+                                <i class="fas fa-briefcase"></i> 2+ Years Exp
+                            </div>
+                            <div class="info-chip">
+                                <i class="fas fa-trophy"></i> 6+ Certs
+                            </div>
+                            <div class="info-chip">
+                                <i class="fas fa-users"></i> OWASP | DEFCON | GDG
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORLD 2: SKILLS (Inventory / Skill Tree) -->
+        <section id="skills" class="world" data-world="2">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 2</span>
+                    <h2>SKILL TREE</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="skill-tree-tabs">
+                    <button class="st-tab active" data-tab="dev-skills"><i class="fas fa-code"></i> Development</button>
+                    <button class="st-tab" data-tab="sec-skills"><i class="fas fa-shield-halved"></i> Security</button>
+                    <button class="st-tab" data-tab="inv-skills"><i class="fas fa-toolbox"></i> Inventory</button>
+                </div>
+
+                <div class="st-content active" id="dev-skills">
+                    <div class="skill-nodes">
+                        <div class="skill-node reveal-up" data-xp="150">
+                            <div class="node-icon"><i class="fab fa-python"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Python</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="92"></div></div>
+                                <span class="node-level">LVL 92</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="120">
+                            <div class="node-icon"><i class="fab fa-js-square"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">JavaScript</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="85"></div></div>
+                                <span class="node-level">LVL 85</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="100">
+                            <div class="node-icon"><i class="fas fa-gem"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Solidity / Web3</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="80"></div></div>
+                                <span class="node-level">LVL 80</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="110">
+                            <div class="node-icon"><i class="fab fa-react"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">React</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="78"></div></div>
+                                <span class="node-level">LVL 78</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="130">
+                            <div class="node-icon"><i class="fas fa-flask-vial"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Flask</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="88"></div></div>
+                                <span class="node-level">LVL 88</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="140">
+                            <div class="node-icon"><i class="fas fa-terminal"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Bash / PowerShell</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="90"></div></div>
+                                <span class="node-level">LVL 90</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="80">
+                            <div class="node-icon"><i class="fab fa-php"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">PHP</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="75"></div></div>
+                                <span class="node-level">LVL 75</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="70">
+                            <div class="node-icon"><i class="fab fa-java"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Java / C++</span>
+                                <div class="xp-bar-mini"><div class="xp-fill-mini" data-width="72"></div></div>
+                                <span class="node-level">LVL 72</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="st-content" id="sec-skills">
+                    <div class="skill-nodes">
+                        <div class="skill-node reveal-up" data-xp="200">
+                            <div class="node-icon sec"><i class="fas fa-globe"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Web App VAPT</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="95"></div></div>
+                                <span class="node-level">LVL 95</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="180">
+                            <div class="node-icon sec"><i class="fas fa-network-wired"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Network VAPT</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="90"></div></div>
+                                <span class="node-level">LVL 90</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="160">
+                            <div class="node-icon sec"><i class="fas fa-plug"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">API Pentesting</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="88"></div></div>
+                                <span class="node-level">LVL 88</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="140">
+                            <div class="node-icon sec"><i class="fas fa-server"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Active Directory</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="82"></div></div>
+                                <span class="node-level">LVL 82</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="170">
+                            <div class="node-icon sec"><i class="fas fa-shield-halved"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">OWASP Top 10</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="95"></div></div>
+                                <span class="node-level">LVL 95</span>
+                            </div>
+                        </div>
+                        <div class="skill-node reveal-up" data-xp="150">
+                            <div class="node-icon sec"><i class="fas fa-arrow-up-right-dots"></i></div>
+                            <div class="node-info">
+                                <span class="node-name">Privilege Escalation</span>
+                                <div class="xp-bar-mini sec"><div class="xp-fill-mini" data-width="87"></div></div>
+                                <span class="node-level">LVL 87</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="st-content" id="inv-skills">
+                    <div class="inventory-grid">
+                        <div class="inv-slot reveal-up" data-xp="30" title="Burp Suite"><div class="inv-item legendary"><i class="fas fa-spider"></i></div><span>Burp Suite</span></div>
+                        <div class="inv-slot reveal-up" data-xp="30" title="Metasploit"><div class="inv-item legendary"><i class="fas fa-bomb"></i></div><span>Metasploit</span></div>
+                        <div class="inv-slot reveal-up" data-xp="25" title="Nmap"><div class="inv-item epic"><i class="fas fa-crosshairs"></i></div><span>Nmap</span></div>
+                        <div class="inv-slot reveal-up" data-xp="25" title="Wireshark"><div class="inv-item epic"><i class="fas fa-wave-square"></i></div><span>Wireshark</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Frida"><div class="inv-item rare"><i class="fas fa-mobile-screen"></i></div><span>Frida</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Postman"><div class="inv-item rare"><i class="fas fa-paper-plane"></i></div><span>Postman</span></div>
+                        <div class="inv-slot reveal-up" data-xp="25" title="SQLmap"><div class="inv-item epic"><i class="fas fa-database"></i></div><span>SQLmap</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Impacket"><div class="inv-item rare"><i class="fas fa-key"></i></div><span>Impacket</span></div>
+                        <div class="inv-slot reveal-up" data-xp="15" title="Gobuster"><div class="inv-item common"><i class="fas fa-folder-open"></i></div><span>Gobuster</span></div>
+                        <div class="inv-slot reveal-up" data-xp="15" title="Nikto"><div class="inv-item common"><i class="fas fa-search"></i></div><span>Nikto</span></div>
+                        <div class="inv-slot reveal-up" data-xp="25" title="Docker"><div class="inv-item epic"><i class="fab fa-docker"></i></div><span>Docker</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Git"><div class="inv-item rare"><i class="fab fa-git-alt"></i></div><span>Git</span></div>
+                        <div class="inv-slot reveal-up" data-xp="30" title="Kali Linux"><div class="inv-item legendary"><i class="fab fa-linux"></i></div><span>Kali Linux</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Hardhat"><div class="inv-item rare"><i class="fab fa-ethereum"></i></div><span>Hardhat</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="Nessus"><div class="inv-item rare"><i class="fas fa-fire"></i></div><span>Nessus</span></div>
+                        <div class="inv-slot reveal-up" data-xp="20" title="pfSense"><div class="inv-item rare"><i class="fas fa-shield"></i></div><span>pfSense</span></div>
+                    </div>
+                    <div class="inv-legend">
+                        <span class="leg-item"><span class="dot legendary"></span> Legendary</span>
+                        <span class="leg-item"><span class="dot epic"></span> Epic</span>
+                        <span class="leg-item"><span class="dot rare"></span> Rare</span>
+                        <span class="leg-item"><span class="dot common"></span> Common</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORLD 3: EXPERIENCE (Quest Log) -->
+        <section id="experience" class="world" data-world="3">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 3</span>
+                    <h2>QUEST LOG</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="quest-list">
+                    <div class="quest-card active-quest reveal-up" data-xp="300">
+                        <div class="quest-status"><span class="quest-badge active">ACTIVE</span></div>
+                        <div class="quest-info">
+                            <h3 class="quest-title"><i class="fas fa-scroll"></i> Freelance Developer & Security Engineer</h3>
+                            <p class="quest-giver">Self-Employed &bull; <span class="quest-loc"><i class="fas fa-globe"></i> Remote</span></p>
+                            <p class="quest-date">Feb 2024 &mdash; Present</p>
+                            <div class="quest-objectives">
+                                <p class="obj-title">OBJECTIVES:</p>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Build and deploy full-stack web apps and Web3 DApps for clients</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Conduct end-to-end VAPT on web apps, APIs, and networks</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Perform security assessments covering OWASP Top 10 and API security</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Deliver secure, production-ready code with integrated security testing</div>
+                            </div>
+                            <div class="quest-rewards">
+                                <span class="reward"><i class="fas fa-star"></i> +300 XP</span>
+                                <span class="reward"><i class="fas fa-code"></i> React</span>
+                                <span class="reward"><i class="fas fa-cube"></i> Web3</span>
+                                <span class="reward"><i class="fas fa-shield-halved"></i> WAPT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quest-card reveal-up" data-xp="200">
+                        <div class="quest-status"><span class="quest-badge complete">COMPLETE</span></div>
+                        <div class="quest-info">
+                            <h3 class="quest-title"><i class="fas fa-scroll"></i> Jr. Security Intern</h3>
+                            <p class="quest-giver">Reinfosec &bull; <span class="quest-loc"><i class="fas fa-map-marker-alt"></i> Bangalore</span></p>
+                            <p class="quest-date">Sep 2024 &mdash; Feb 2025</p>
+                            <div class="quest-objectives">
+                                <p class="obj-title">OBJECTIVES:</p>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Assist in WAPT and VAPT engagements, finding SQLi, XSS, CSRF</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Document vulnerability findings with remediation reports</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Gain hands-on experience with penetration testing tools</div>
+                            </div>
+                            <div class="quest-rewards">
+                                <span class="reward"><i class="fas fa-star"></i> +200 XP</span>
+                                <span class="reward"><i class="fas fa-bug"></i> SQLi</span>
+                                <span class="reward"><i class="fas fa-code"></i> XSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quest-card reveal-up" data-xp="200">
+                        <div class="quest-status"><span class="quest-badge complete">COMPLETE</span></div>
+                        <div class="quest-info">
+                            <h3 class="quest-title"><i class="fas fa-scroll"></i> Security Researcher</h3>
+                            <p class="quest-giver">Association For Cybersecurity &bull; <span class="quest-loc"><i class="fas fa-globe"></i> Remote</span></p>
+                            <p class="quest-date">Mar 2024 &mdash; Jan 2025</p>
+                            <div class="quest-objectives">
+                                <p class="obj-title">OBJECTIVES:</p>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Research emerging web and network exploitation techniques</div>
+                                <div class="obj-item completed"><i class="fas fa-check-square"></i> Develop learning materials on cybersecurity fundamentals</div>
+                            </div>
+                            <div class="quest-rewards">
+                                <span class="reward"><i class="fas fa-star"></i> +200 XP</span>
+                                <span class="reward"><i class="fas fa-microscope"></i> Research</span>
+                                <span class="reward"><i class="fas fa-users"></i> Community</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORLD 4: PROJECTS (Builds / Dungeons) -->
+        <section id="projects" class="world" data-world="4">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 4</span>
+                    <h2>DUNGEON BUILDS</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="dungeon-grid">
+                    <div class="dungeon-card boss reveal-up" data-xp="250">
+                        <div class="dungeon-banner">
+                            <span class="dungeon-difficulty"><i class="fas fa-skull"></i> BOSS RAID</span>
+                            <span class="dungeon-year">2026</span>
+                        </div>
+                        <div class="dungeon-icon"><i class="fas fa-industry"></i></div>
+                        <h3>ICS/SCADA Cybersecurity Lab</h3>
+                        <p>4-VM lab simulating ICS/OT plant network with Modbus TCP, Flask HMI, SMB server, and Ligolo-ng tunneling for red team pivoting.</p>
+                        <div class="dungeon-loot">
+                            <span>Vagrant</span><span>VirtualBox</span><span>pymodbus</span><span>Flask</span><span>Ligolo-ng</span>
+                        </div>
+                        <div class="dungeon-progress">
+                            <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+                            <span>100% Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="dungeon-card reveal-up" data-xp="150">
+                        <div class="dungeon-banner">
+                            <span class="dungeon-difficulty"><i class="fas fa-star"></i> ELITE</span>
+                            <span class="dungeon-year">2024</span>
+                        </div>
+                        <div class="dungeon-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Home Network Security Lab</h3>
+                        <p>pfSense firewall + Suricata IDS for network monitoring. Regular Nessus vulnerability assessments.</p>
+                        <div class="dungeon-loot">
+                            <span>pfSense</span><span>Suricata</span><span>Nessus</span>
+                        </div>
+                        <div class="dungeon-progress">
+                            <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+                            <span>100% Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="dungeon-card reveal-up" data-xp="200">
+                        <div class="dungeon-banner">
+                            <span class="dungeon-difficulty"><i class="fas fa-star"></i> ELITE</span>
+                            <a href="https://github.com/Paranjay-pandu/terrasight" target="_blank" class="dungeon-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="dungeon-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>TerraSight</h3>
+                        <p>Geospatial intelligence platform with satellite data, mapping APIs for terrain visualization and threat modeling.</p>
+                        <div class="dungeon-loot">
+                            <span>Web App</span><span>GIS</span><span>Analytics</span><span>Maps</span>
+                        </div>
+                        <div class="dungeon-progress">
+                            <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+                            <span>100% Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="dungeon-card reveal-up" data-xp="180">
+                        <div class="dungeon-banner">
+                            <span class="dungeon-difficulty"><i class="fas fa-hat-wizard"></i> RARE</span>
+                            <a href="https://github.com/tanilkaplan-oss/stock-forcaster" target="_blank" class="dungeon-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="dungeon-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Stock Forecaster</h3>
+                        <p>AI-powered stock prediction using ML models and historical data for price trend forecasting.</p>
+                        <div class="dungeon-loot">
+                            <span>Python</span><span>ML</span><span>Data Science</span><span>Finance</span>
+                        </div>
+                        <div class="dungeon-progress">
+                            <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+                            <span>100% Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="dungeon-card reveal-up" data-xp="200">
+                        <div class="dungeon-banner">
+                            <span class="dungeon-difficulty"><i class="fas fa-star"></i> ELITE</span>
+                            <a href="https://github.com/MRALPHA20/portfolioweb3" target="_blank" class="dungeon-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="dungeon-icon"><i class="fab fa-ethereum"></i></div>
+                        <h3>Web3 Portfolio DApp</h3>
+                        <p>Decentralized portfolio with wallet integration, blockchain interactions, and modern frontend.</p>
+                        <div class="dungeon-loot">
+                            <span>Web3</span><span>Solidity</span><span>Ethers.js</span><span>DApp</span>
+                        </div>
+                        <div class="dungeon-progress">
+                            <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+                            <span>100% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORLD 5: ACHIEVEMENTS (Certifications + Community) -->
+        <section id="achievements" class="world" data-world="5">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 5</span>
+                    <h2>ACHIEVEMENTS</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="sub-world-title"><i class="fas fa-trophy"></i> CERTIFICATIONS UNLOCKED</h3>
+                <div class="achievement-grid">
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon microsoft"><i class="fab fa-microsoft"></i></div>
+                        <div class="ach-info">
+                            <h4>Azure Security Engineer</h4>
+                            <span class="ach-code">AZ-500 &bull; Microsoft</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon google"><i class="fab fa-google"></i></div>
+                        <div class="ach-info">
+                            <h4>Cybersecurity Professional</h4>
+                            <span class="ach-code">GCC &bull; Google</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon secops"><i class="fas fa-network-wired"></i></div>
+                        <div class="ach-info">
+                            <h4>Certified Network Pentester</h4>
+                            <span class="ach-code">CNPen &bull; SecOps Group</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon blockchain"><i class="fas fa-cube"></i></div>
+                        <div class="ach-info">
+                            <h4>Blockchain Practitioner</h4>
+                            <span class="ach-code">CBP &bull; SecOps Group</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon secops"><i class="fas fa-shield-halved"></i></div>
+                        <div class="ach-info">
+                            <h4>Network Security Practitioner</h4>
+                            <span class="ach-code">CNSP &bull; SecOps Group</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    <div class="achievement-card unlocked reveal-up" data-xp="100">
+                        <div class="ach-icon htb"><i class="fas fa-skull"></i></div>
+                        <div class="ach-info">
+                            <h4>Penetration Tester LVL I</h4>
+                            <span class="ach-code">Dante Pro Lab &bull; HackTheBox</span>
+                        </div>
+                        <div class="ach-badge"><i class="fas fa-unlock"></i></div>
+                    </div>
+                </div>
+
+                <h3 class="sub-world-title" style="margin-top:60px"><i class="fas fa-users"></i> GUILDS & EVENTS</h3>
+                <div class="guilds-grid">
+                    <div class="guild-card reveal-up">
+                        <div class="guild-banner">GUILDS</div>
+                        <ul class="guild-list">
+                            <li><span class="guild-rank">&#9733;</span> OWASP Bangalore Associate</li>
+                            <li><span class="guild-rank">&#9733;</span> DEFCON Member</li>
+                            <li><span class="guild-rank">&#9733;</span> Google Developer Groups</li>
+                            <li><span class="guild-rank">&#9733;</span> Hackers Meetup Organizer, Bangalore</li>
+                        </ul>
+                    </div>
+                    <div class="guild-card reveal-up">
+                        <div class="guild-banner">EVENTS</div>
+                        <ul class="guild-list">
+                            <li><span class="guild-rank">&#9830;</span> Seasides 2025</li>
+                            <li><span class="guild-rank">&#9830;</span> Google DevFest 2024</li>
+                            <li><span class="guild-rank">&#9830;</span> Google Build With AI 2024</li>
+                            <li><span class="guild-rank">&#9830;</span> ContentStack Meetup 2024</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORLD 6: CONTACT -->
+        <section id="contact" class="world" data-world="6">
+            <div class="world-header">
+                <div class="world-title-card">
+                    <span class="world-num">WORLD 6</span>
+                    <h2>MESSAGE BOARD</h2>
+                    <div class="world-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-game-grid">
+                    <div class="npc-dialog reveal-up">
+                        <div class="npc-sprite">
+                            <div class="npc-char">
+                                <div class="npc-head"></div>
+                                <div class="npc-body"></div>
+                            </div>
+                            <div class="npc-name">NPC: Karthik</div>
+                        </div>
+                        <div class="dialog-box">
+                            <p>"Want to team up on a quest? Send me a message or find me on these channels!"</p>
+                        </div>
+                        <div class="contact-channels">
+                            <a href="mailto:karthikumaraju@gmail.com" class="channel-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>karthikumaraju@gmail.com</span>
+                            </a>
+                            <a href="tel:+918550868583" class="channel-btn">
+                                <i class="fas fa-phone"></i>
+                                <span>+91 8550868583</span>
+                            </a>
+                            <a href="https://linkedin.com/in/karthikumaraju" target="_blank" class="channel-btn">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/MRALPHA20" target="_blank" class="channel-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="game-form reveal-up" id="contactForm">
+                        <div class="form-title"><i class="fas fa-feather-pointed"></i> COMPOSE MESSAGE</div>
+                        <div class="gf-group">
+                            <label>PLAYER NAME</label>
+                            <input type="text" name="name" placeholder="Enter your name..." required>
+                        </div>
+                        <div class="gf-group">
+                            <label>EMAIL SCROLL</label>
+                            <input type="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="gf-group">
+                            <label>SUBJECT</label>
+                            <input type="text" name="subject" placeholder="Quest title..." required>
+                        </div>
+                        <div class="gf-group">
+                            <label>MESSAGE</label>
+                            <textarea name="message" rows="4" placeholder="Write your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="send-btn">
+                            <i class="fas fa-paper-plane"></i> SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FLOATING COINS for interaction -->
+    <div id="coinParticles"></div>
+
+    <!-- GAME OVER / FOOTER -->
+    <footer class="game-footer hidden" id="gameFooter">
+        <div class="container">
+            <p class="footer-game">&copy; 2026 Karthik Kumar Raju &bull; All quests reserved &bull; <a href="karthik_cv.pdf" download>Download CV</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
