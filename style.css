@@ -376,7 +376,7 @@ ul { list-style: none; }
 .about-photo { display: flex; align-items: flex-start; justify-content: center; }
 
 .photo-wrapper {
-    width: 200px; height: 200px; border-radius: 50%; overflow: hidden;
+    width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
     border: 3px solid rgba(124, 58, 237, 0.3);
     box-shadow: 0 0 40px rgba(124, 58, 237, 0.12), 0 12px 40px rgba(0,0,0,0.4);
     flex-shrink: 0;
